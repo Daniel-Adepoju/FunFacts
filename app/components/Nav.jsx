@@ -7,7 +7,7 @@ import {signIn,signOut,useSession,getProviders} from "next-auth/react"
 const Nav = () => {
   const {data:session} = useSession()
   const [isMenuOpen,setIsMenuOpen] = useState(false)
-  const [providers,setProviders] = useState(null)
+  const [providers,setProviders] = useState([])
  
  useEffect(() => {
   const grabProviders = async () => {
