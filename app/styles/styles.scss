@@ -1,0 +1,350 @@
+  * {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+
+  @mixin flex($direction,$align:center,$justify:flex-start) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+  }
+  @mixin transition($duration:350ms,$type:ease-in) {
+    transition: $duration $type;
+  }
+
+  body {
+    width:100%;
+    min-height: 100vh;
+    @include flex(column,center);
+    background-color: rgb(60, 56, 56);
+  }
+
+  .title {
+    text-align: center;
+    padding: .2em;
+    color: rgb(62, 58, 58);
+    text-transform: capitalize;
+  }
+
+  .nav {
+    position: relative;
+ @include flex(row,center,space-between);
+ gap:30px;
+ background-color: white;
+ width: 100%;
+
+ .navLogo {
+   padding:.1em;
+ }
+
+ .navItems, .navItemsDesktop {
+    @include flex(row,center,center);
+    gap: .9em;
+    width: 300px;
+    button {
+        width: 10em;
+        padding:.7em;
+        border: none;
+        border-radius: 20px;
+        background-color: rgb(46, 44, 44);
+        color:white;
+        @include transition();
+        &.signOut {
+            background-color: rgb(116, 1, 1);
+        }
+        &.signIn {
+          background-color: rgb(8, 91, 8);
+        }
+        &:hover {
+            opacity: 80%;
+        }
+        a {
+          text-decoration: none;
+          color:white;
+          background-color: rgb(48, 44, 44);
+          width:100%;
+          padding: .1em;
+          display: block;
+          border-radius: 20px;
+        }
+    }
+ }
+ .navItems{
+    display: none;
+ }
+ .menu {
+    display: none;
+ }
+ @media (max-width: 700px) {
+    .navItems {
+        display: none;
+        padding:.5em;
+        background-color: inherit;
+        position: absolute;
+        border-radius: 10px;
+        top: 120%;
+        right: 3%;
+        box-shadow: -2px 2px 2px 1px rgb(78, 74, 74);
+        &.active {
+     @include flex(column,center);
+        }
+    }
+    .navItemsDesktop {
+       display: none; 
+    }
+
+    .menu {
+     display: block;
+     margin-right: 10px;
+     cursor: pointer;
+    }
+ }
+  }
+  .profilePicture {
+   border-radius: 50%;
+   padding: .2em;
+  }
+
+
+
+  .main {
+    width:99%;
+  }
+  .home {
+    @include flex(column,center,center);
+    width:100%;
+    min-height: 50vh;
+    background-color: white;
+    margin: 20px auto;
+    border-radius: 20px 100px 20px 100px;
+    @media (min-width:700px) {
+        @include flex(row,center ,space-evenly)
+    }
+    h2 {
+        text-align: center;
+        padding: .2em;
+        color: rgb(62, 58, 58);
+        text-transform: capitalize;
+    }
+    .trivia {
+        background-color: aqua;
+        padding: .2em;
+        min-height: 100px;
+    }
+  }
+
+.lineTop {
+  background-color: white;
+  width: 95%;
+  padding: .0.1px;
+  height: 2px;
+  border-radius: 100px;
+  margin: auto;
+}
+
+
+.feed {
+   @extend .home;
+   @include flex(column,center,flex-start);
+   border-radius: 100px 0 100px 0;
+  //  z-index: -4;
+ h2 {
+
+ }
+ form {
+  @include flex(row, center,center);
+  width: 60%;
+  height: 40px;
+  // background-color: grey;
+ }
+ input {
+  width: 80%;
+  padding: .6em;
+  border-radius: 10px;
+  border: none;
+  outline: 1px solid black;
+ }
+}
+.cardList {
+
+}
+.postCard {
+ width: 16em;
+ min-height: 10em;
+ padding: .5em;
+ box-shadow: -1px -1px 2px 1px rgb(128, 117, 117);
+background-color: rgb(255, 255, 255);
+border-radius:  10px;
+z-index: 1;
+.head {
+  @include flex(row-reverse,center,space-between);
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid black;
+  padding:.6em .2em;
+}
+ .cardImage {
+  background-color: white;
+  position: relative;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+ z-index: 200;
+//  isolation: isolate;
+  padding: .1em;
+  &::before {
+    content: '';
+    isolation:isolate ;
+    position: absolute;
+    background-image: linear-gradient(#504f4f,rgb(0, 0, 0),#4e4c4c);
+    width:47px;
+    height:47px;
+border-radius: 50%;
+  top: -10%;
+  left:-10%;
+  z-index: -1;
+  animation: spin 500ms ease-in infinite;
+  }
+  @keyframes spin {
+   from {rotate: 360deg;}
+   to {rotate: 0deg}
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+ }
+ .creatorDeets {
+  @include flex(column, center,space-evenly);
+  width: 75%;
+  min-height:  10px;
+  gap: 5px;
+  margin-right: 8%;
+  .name,.email {
+    width: 100%;
+    min-height: 20px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+  }
+ }
+ .middle {
+  @include flex(column,flex-start,space-evenly);
+   width:90%;
+   min-height: 50%;
+   padding: .1em;
+   gap: 10px;
+   .copyBtn {
+    @include flex(row,center);
+    gap: 8px;
+    width:40px;
+    cursor: pointer;
+    img{
+      width: 100%;
+    }
+   }
+ }
+ .content {
+  // background-color: rgb(245, 245, 245);
+  min-height: 50%;
+  padding: .2em .6emqe  ;
+ }
+
+}
+
+
+.formContainer {
+  @include flex(column,center,center);
+  @extend .home;
+  margin-top: 18px;
+  width: 80vw;
+  min-height: 50vh;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  padding:1em;
+  @media (min-width: 700px) {
+    width: 60vw;
+  }
+  h2{
+    @extend .title;
+  }
+  form {
+    @include flex(column);
+    width:60vw;
+    min-height: 40vh;
+    gap:10px;
+    label{
+  outline: 1px solid black;
+  cursor:pointer;
+  padding:.2em .5em;
+  margin-bottom: 10px;
+  border-radius: 10px;
+    }
+    textarea{
+      resize: none;
+      width: 90%;
+      min-height: 35vh;
+      padding: .6em 1em;
+      font-size: 17px;
+      color:white;
+      background-color: rgb(56, 53, 53);
+      outline: none;
+      border:none;
+      border-radius: 15px;
+      @media (min-width:700px) {
+        width: 60%;
+      }
+      &::placeholder {
+        color: white;
+    }
+  }
+  input {
+    @extend textarea;
+    min-height: 4vh;
+  }
+}
+ .postBtns {
+  @include flex(row, center , space-evenly);
+  width: 100%;
+  // background-color: rgb(188, 140, 7);
+  padding: .7em;
+  @media (min-width: 700px) {
+    width: 70%;
+  }
+  a,button {
+    display: block;
+    width:45%;
+    text-decoration: none;
+    background-color: rgb(13, 146, 13);
+    border: none;
+    color: white;
+    outline: none;
+    padding: 9px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid black;
+    cursor:pointer;
+    @include transition(300ms,ease-in );
+    &:hover {
+      @include transition(300ms,ease-in );
+      transform: scale(0.9);
+    }
+    &.cancel {
+      color: black;
+      background-color: rgb(255, 255, 255);
+    }
+    @media (min-width: 700px) {
+      width: 30%;
+    }
+  }
+ }
+}
+
+  .hide {
+    display:none;
+  }

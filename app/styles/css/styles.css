@@ -1,0 +1,379 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(60, 56, 56);
+}
+
+.title, .formContainer h2 {
+  text-align: center;
+  padding: 0.2em;
+  color: rgb(62, 58, 58);
+  text-transform: capitalize;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background-color: white;
+  width: 100%;
+}
+.nav .navLogo {
+  padding: 0.1em;
+}
+.nav .navItems, .nav .navItemsDesktop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9em;
+  width: 300px;
+}
+.nav .navItems button, .nav .navItemsDesktop button {
+  width: 10em;
+  padding: 0.7em;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(46, 44, 44);
+  color: white;
+  transition: 350ms ease-in;
+}
+.nav .navItems button.signOut, .nav .navItemsDesktop button.signOut {
+  background-color: rgb(116, 1, 1);
+}
+.nav .navItems button.signIn, .nav .navItemsDesktop button.signIn {
+  background-color: rgb(8, 91, 8);
+}
+.nav .navItems button:hover, .nav .navItemsDesktop button:hover {
+  opacity: 80%;
+}
+.nav .navItems button a, .nav .navItemsDesktop button a {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(48, 44, 44);
+  width: 100%;
+  padding: 0.1em;
+  display: block;
+  border-radius: 20px;
+}
+.nav .navItems {
+  display: none;
+}
+.nav .menu {
+  display: none;
+}
+@media (max-width: 700px) {
+  .nav .navItems {
+    display: none;
+    padding: 0.5em;
+    background-color: inherit;
+    position: absolute;
+    border-radius: 10px;
+    top: 120%;
+    right: 3%;
+    box-shadow: -2px 2px 2px 1px rgb(78, 74, 74);
+  }
+  .nav .navItems.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .nav .navItemsDesktop {
+    display: none;
+  }
+  .nav .menu {
+    display: block;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+}
+
+.profilePicture {
+  border-radius: 50%;
+  padding: 0.2em;
+}
+
+.main {
+  width: 99%;
+}
+
+.home, .formContainer, .feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50vh;
+  background-color: white;
+  margin: 20px auto;
+  border-radius: 20px 100px 20px 100px;
+}
+@media (min-width: 700px) {
+  .home, .formContainer, .feed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}
+.home h2, .formContainer h2, .feed h2 {
+  text-align: center;
+  padding: 0.2em;
+  color: rgb(62, 58, 58);
+  text-transform: capitalize;
+}
+.home .trivia, .formContainer .trivia, .feed .trivia {
+  background-color: aqua;
+  padding: 0.2em;
+  min-height: 100px;
+}
+
+.lineTop {
+  background-color: white;
+  width: 95%;
+  padding: 0 0.1px;
+  height: 2px;
+  border-radius: 100px;
+  margin: auto;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 100px 0 100px 0;
+}
+.feed form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 40px;
+}
+.feed input {
+  width: 80%;
+  padding: 0.6em;
+  border-radius: 10px;
+  border: none;
+  outline: 1px solid black;
+}
+
+.postCard {
+  width: 16em;
+  min-height: 10em;
+  padding: 0.5em;
+  box-shadow: -1px -1px 2px 1px rgb(128, 117, 117);
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  z-index: 1;
+}
+.postCard .head {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid black;
+  padding: 0.6em 0.2em;
+}
+.postCard .cardImage {
+  background-color: white;
+  position: relative;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 200;
+  padding: 0.1em;
+}
+.postCard .cardImage::before {
+  content: "";
+  isolation: isolate;
+  position: absolute;
+  background-image: linear-gradient(#504f4f, rgb(0, 0, 0), #4e4c4c);
+  width: 47px;
+  height: 47px;
+  border-radius: 50%;
+  top: -10%;
+  left: -10%;
+  z-index: -1;
+  animation: spin 500ms ease-in infinite;
+}
+@keyframes spin {
+  from {
+    rotate: 360deg;
+  }
+  to {
+    rotate: 0deg;
+  }
+}
+.postCard .cardImage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.postCard .creatorDeets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 75%;
+  min-height: 10px;
+  gap: 5px;
+  margin-right: 8%;
+}
+.postCard .creatorDeets .name, .postCard .creatorDeets .email {
+  width: 100%;
+  min-height: 20px;
+  overflow-wrap: break-word;
+  overflow: hidden;
+}
+.postCard .middle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 90%;
+  min-height: 50%;
+  padding: 0.1em;
+  gap: 10px;
+}
+.postCard .middle .copyBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 40px;
+  cursor: pointer;
+}
+.postCard .middle .copyBtn img {
+  width: 100%;
+}
+.postCard .content {
+  min-height: 50%;
+  padding: 0.2em 0.6emqe;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  width: 80vw;
+  min-height: 50vh;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  padding: 1em;
+}
+@media (min-width: 700px) {
+  .formContainer {
+    width: 60vw;
+  }
+}
+.formContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 60vw;
+  min-height: 40vh;
+  gap: 10px;
+}
+.formContainer form label {
+  outline: 1px solid black;
+  cursor: pointer;
+  padding: 0.2em 0.5em;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+.formContainer form textarea, .formContainer form input {
+  resize: none;
+  width: 90%;
+  min-height: 35vh;
+  padding: 0.6em 1em;
+  font-size: 17px;
+  color: white;
+  background-color: rgb(56, 53, 53);
+  outline: none;
+  border: none;
+  border-radius: 15px;
+}
+@media (min-width: 700px) {
+  .formContainer form textarea, .formContainer form input {
+    width: 60%;
+  }
+}
+.formContainer form textarea::-moz-placeholder, .formContainer form input::-moz-placeholder {
+  color: white;
+}
+.formContainer form textarea::placeholder, .formContainer form input::placeholder {
+  color: white;
+}
+.formContainer form input {
+  min-height: 4vh;
+}
+.formContainer .postBtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0.7em;
+}
+@media (min-width: 700px) {
+  .formContainer .postBtns {
+    width: 70%;
+  }
+}
+.formContainer .postBtns a, .formContainer .postBtns button {
+  display: block;
+  width: 45%;
+  text-decoration: none;
+  background-color: rgb(13, 146, 13);
+  border: none;
+  color: white;
+  outline: none;
+  padding: 9px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 300ms ease-in;
+}
+.formContainer .postBtns a:hover, .formContainer .postBtns button:hover {
+  transition: 300ms ease-in;
+  transform: scale(0.9);
+}
+.formContainer .postBtns a.cancel, .formContainer .postBtns button.cancel {
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+@media (min-width: 700px) {
+  .formContainer .postBtns a, .formContainer .postBtns button {
+    width: 30%;
+  }
+}
+
+.hide {
+  display: none;
+}/*# sourceMappingURL=styles.css.map */
