@@ -57,7 +57,7 @@ const Nav = () => {
         </>}
         
         <>
-    {providers && Object.values(providers).map((provider) => {
+    {providers ? Object.values(providers).map((provider) => {
      return <button
       type='button'
       key={`${provider.name + '1'}`}
@@ -65,7 +65,7 @@ const Nav = () => {
       className={`signIn ${session?.user && 'hide'}`}>
          Sign In
       </button>
-    })}
+    }) : <button>Fail</button>}
     </>
     </span>
 
