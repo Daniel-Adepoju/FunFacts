@@ -60,3 +60,4 @@ getPostDetails()
 }
 
 export default EditPost  
+  
