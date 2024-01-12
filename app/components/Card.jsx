@@ -1,18 +1,22 @@
-'use client'
-import { useState } from 'react'
-import { useSession } from 'next-auth/react'
-import { usePathname, useRouter } from 'next/navigation'
-import Image from 'next/image'
+"use client"
+import { useState } from "react"
+import { useSession } from "next-auth/react"
+import { usePathname, useRouter } from "next/navigation"
+import Image from "next/image"
 
 const Card = ({ post, handleClick, handleEdit, handleDelete }) => {
+  const{data:session} = useSession()
+  const pathName = usePathname()
+  const router = useRouter()
+
   const [copied, setCopied] = useState(false)
-  
+
   const handleCopy = () => {
     setCopied(true)
     navigator.clipboard.writeText(post.content)
-    setTimeout(() => setCopied(false),3000)
+    setTimeout(() => setCopied(false), 3000)
   }
-
+  
   return (
     <>
       <div className="postCard">
@@ -38,20 +42,29 @@ const Card = ({ post, handleClick, handleEdit, handleDelete }) => {
             <p>{post.content}</p>
           </div>
           <h5>
-            <p>{!post.tag.startsWith('#') ? `#${post.tag}` : post.tag}</p>
+            <p>{!post.tag.startsWith("#") ? `#${post.tag}` : post.tag}</p>
           </h5>
-          <div className="copyBtn" onClick={() => handleCopy()}>
+          <div
+            className="copyBtn"
+            onClick={() => handleCopy()}
+          >
             <img
-              src={`${!copied ? '/logos/clipboard.svg' : '/logos/clipboard2.svg'}`}
+              src={`${!copied ? "/logos/clipboard.svg" : "/logos/clipboard2.svg"}`}
               alt="clipboard icon"
             />
             <span> Copy</span>
           </div>
         </div>
-        {/* <div className="footer">
-          <button className="cardAction"> Edit</button>
-          <button className="cardAction"> Delete</button>
-        </div> */}
+        {session?.user.id === post.creator._id && pathName === "/profile" && (
+          <div className="footer">
+            <div className="cardAction" onClick={handleEdit}>
+              <img src='logos/edit.svg'/> <span>Edit</span>
+              </div>
+            <div className="cardAction" onClick={handleDelete}> 
+            <img src='/logos/delete.svg' /> <span>Delete</span>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )

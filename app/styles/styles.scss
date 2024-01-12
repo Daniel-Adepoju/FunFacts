@@ -15,9 +15,9 @@
   }
 
   body {
+    @include flex(column,center);
     width:100%;
     min-height: 100vh;
-    @include flex(column,center);
     background-color: rgb(60, 56, 56);
   }
 
@@ -193,7 +193,6 @@ z-index: 1;
   height: 40px;
   cursor: pointer;
  z-index: 200;
-//  isolation: isolate;
   padding: .1em;
   &::before {
     content: '';
@@ -238,6 +237,8 @@ border-radius: 50%;
    min-height: 50%;
    padding: .1em;
    gap: 10px;
+   margin-top: 10px;
+   margin-inline:auto;
    .copyBtn {
     @include flex(row,center);
     gap: 8px;
@@ -249,11 +250,31 @@ border-radius: 50%;
    }
  }
  .content {
-  // background-color: rgb(245, 245, 245);
+  background-color: rgb(245, 245, 245);
+  white-space: pre-wrap;
   min-height: 50%;
-  padding: .2em .6emqe  ;
+  padding: .2em .6em;
  }
 
+  .footer {
+    width: 90%;
+    padding: .7em .4em;
+    @include flex(row,center,space-between);
+    margin: 4px auto;
+  // background-color: #4e4c4c;
+    div {
+      @include flex(row,center,center);
+      gap:10px;
+      padding: .3em 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: 2px solid black;
+      @include transition(560ms, ease-in);
+      &:hover {
+        transform: scale(0.94);
+      }
+    }
+  }
 }
 
 
@@ -311,7 +332,6 @@ border-radius: 50%;
  .postBtns {
   @include flex(row, center , space-evenly);
   width: 100%;
-  // background-color: rgb(188, 140, 7);
   padding: .7em;
   @media (min-width: 700px) {
     width: 70%;
@@ -338,11 +358,20 @@ border-radius: 50%;
       color: black;
       background-color: rgb(255, 255, 255);
     }
+    &.edit {
+      color:rgb(255, 255, 255);
+      background-color: rgb(2, 97, 64);
+    }
     @media (min-width: 700px) {
       width: 30%;
     }
   }
  }
+}
+
+
+.profile {
+  @extend .home
 }
 
   .hide {

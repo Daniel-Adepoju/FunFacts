@@ -42,6 +42,7 @@ const Form = ({
         <button
         type="submit"
         disabled={submitting}
+        className={`${type === 'Edit' && 'edit'}`}
         >
           {submitting ? `${type}...` : type}
         </button>

@@ -15,10 +15,9 @@ const getPosts = async () => {
   try {
  const res = await fetch('/api/post')
  const data = await res.json()
- // if (posts.length === 0) {
+
    const newArr = data
    setPosts(newArr)
- // }
   } catch (error) {
     console.log(error)
   }
@@ -26,7 +25,7 @@ const getPosts = async () => {
 useEffect(() => {
   getPosts()
 },[])
- console.log(posts)
+ 
   return (
     <>
     <div className="lineTop"></div>

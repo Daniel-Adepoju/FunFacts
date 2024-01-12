@@ -40,7 +40,7 @@ const Nav = () => {
 
   <span className={`navItems ${isMenuOpen && 'active'}`}>
    {session?.user && <>
-    <Link href={'/profile'}>
+    <Link href={'/profile'} onClick={() => setIsMenuOpen(false)}>
           <img
           src={session?.user.image}
           alt='profile'
@@ -49,7 +49,7 @@ const Nav = () => {
           className="profilePicture"/>
         </Link>
         <button className="createPost" onClick={() => setIsMenuOpen(false)}>
-      <Link href={'./create-post'}>Create Post</Link></button>
+      <Link href={'/create-post'}>Create Post</Link></button>
         <button className="signOut" onClick={
           () => {
           setIsMenuOpen(false)
@@ -72,7 +72,7 @@ const Nav = () => {
     <span className="navItemsDesktop">
        {session?.user && <>
        <button className="createPost" onClick={() => setIsMenuOpen(false)}>
-        <Link href={'./create-post'}>Create Post</Link>
+        <Link href={'/create-post'}>Create Post</Link>
        </button>
         <button className="signOut" onClick={() => signOut()}> Sign Out </button>
         <Link href={'/profile'}>
@@ -96,10 +96,6 @@ const Nav = () => {
     })}
     </>
     </span> 
-
-    {/* <button className="createPost" onClick={() => setIsMenuOpen(false)}>
-        <Link href={'./create-post'}>Create Post</Link>
-       </button> */}
     </nav>
     
     
