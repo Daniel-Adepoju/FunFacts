@@ -16,7 +16,7 @@ const Nav = () => {
   }
   grabProviders() 
  },[])
-  
+   
   return (
     <nav className="nav">
     <Link href='/'>
