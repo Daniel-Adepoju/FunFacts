@@ -57,7 +57,7 @@ const Nav = () => {
         </>}
         
         <>
-    { Object.values(providers).map((provider) => {
+    {providers && Object.values(providers).map((provider) => {
      return <button
       type='button'
       key={`${provider.name + '1'}`}
