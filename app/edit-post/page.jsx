@@ -59,4 +59,4 @@ getPostDetails()
   )
 }
 
-export default EditPost 
+export default EditPost  
