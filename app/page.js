@@ -1,21 +1,19 @@
+'use client'
 import Feed from "./components/Feed"
+import { useMenu } from "./components/MenuContext"
+import DYK from "./components/DYK"
 
 const Home = () => {
+  const menu = useMenu()
   return (
     <>
-    <div className='home'>
-      <span>
-      <h2> Discover and share fun facts</h2>
-      </span>
-      
-      <span>
-        <h2> Did You know?</h2>
-      <section className='trivia'>
-        There are over 1 billion people on earth
-      </section>
-      </span>
-    </div>
+    <div className='home' onClick={() => menu.setMenuOpen(false)}>
+    <div className="title">
+  {/* <h2>Discover and share fun facts</h2> */}
+  <DYK />
+      </div> 
     <Feed />
+    </div>
     </>
   )
 

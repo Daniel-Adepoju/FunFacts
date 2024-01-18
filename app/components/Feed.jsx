@@ -1,36 +1,21 @@
 'use client'
 import { createContext, useCallback, useEffect, useState } from 'react'
-
 import { CardList } from './CardList'
-
+import axios from 'axios'
 export const PostContext =  createContext()
 
 
 
 const Feed = () => {
-const [searchText,setSearchText] = useState('')
-const [posts,setPosts] = useState()
-
-const getPosts = async () => {
-  try {
- const res = await fetch('/api/post')
- const data = await res.json()
-
-   const newArr = data
-   setPosts(newArr)
-  } catch (error) {
-    console.log(error)
-  }
-}
-useEffect(() => {
-  getPosts()
-},[])
+  const [searchText,setSearchText] = useState('')
  
   return (
     <>
     <div className="lineTop"></div>
     <div className="feed">
+      <div className="title">
       <h2> Feed </h2>
+      </div>
       <form>
     <input 
     placeholder="Search for a tag or a username"
@@ -40,11 +25,7 @@ useEffect(() => {
    onChange={(e) => setSearchText(e.target.value)}
     /> 
       </form>
-      <PostContext.Provider value={posts}>
-      <CardList
-      handleClick={() => (e)}
-      />
-    </PostContext.Provider>
+      <CardList/>
     </div>
     </>
   )

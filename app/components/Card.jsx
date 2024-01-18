@@ -1,10 +1,10 @@
 "use client"
-import { useState } from "react"
+import { useState} from "react"
 import { useSession } from "next-auth/react"
 import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 
-const Card = ({ post, handleClick, handleEdit, handleDelete }) => {
+const Card = ({ post, handleClick, handleEdit, handleDelete,refValue}) => {
   const{data:session} = useSession()
   const pathName = usePathname()
   const router = useRouter()
@@ -19,14 +19,13 @@ const Card = ({ post, handleClick, handleEdit, handleDelete }) => {
   
   return (
     <>
-      <div className="postCard">
+      <div ref={refValue}>
         <div className="head">
           <div className="cardImage">
             <img
               src={post.creator.image}
               alt="user image"
             />
-            {/* <img src="/logos/user.svg" alt="" /> */}
           </div>
           <div className="creatorDeets">
             <div className="name">

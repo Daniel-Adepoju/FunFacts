@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -11,13 +12,14 @@ body {
   justify-content: flex-start;
   width: 100%;
   min-height: 100vh;
-  background-color: rgb(60, 56, 56);
+  background-color: rgb(52, 52, 52);
 }
 
 .title, .formContainer h2 {
+  min-width: 10%;
   text-align: center;
   padding: 0.2em;
-  color: rgb(62, 58, 58);
+  color: rgb(255, 255, 255);
   text-transform: capitalize;
 }
 
@@ -30,11 +32,13 @@ body {
   gap: 30px;
   background-color: white;
   width: 100%;
+  box-shadow: 0px 2px 1px rgb(0, 0, 0);
 }
 .nav .navLogo {
   padding: 0.1em;
 }
-.nav .navItems, .nav .navItemsDesktop {
+.nav .navItems,
+.nav .navItemsDesktop {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,25 +46,31 @@ body {
   gap: 0.9em;
   width: 300px;
 }
-.nav .navItems button, .nav .navItemsDesktop button {
+.nav .navItems button,
+.nav .navItemsDesktop button {
   width: 10em;
   padding: 0.7em;
   border: none;
   border-radius: 20px;
   background-color: rgb(46, 44, 44);
   color: white;
+  cursor: pointer;
   transition: 350ms ease-in;
 }
-.nav .navItems button.signOut, .nav .navItemsDesktop button.signOut {
+.nav .navItems button.signOut,
+.nav .navItemsDesktop button.signOut {
   background-color: rgb(116, 1, 1);
 }
-.nav .navItems button.signIn, .nav .navItemsDesktop button.signIn {
+.nav .navItems button.signIn,
+.nav .navItemsDesktop button.signIn {
   background-color: rgb(8, 91, 8);
 }
-.nav .navItems button:hover, .nav .navItemsDesktop button:hover {
+.nav .navItems button:hover,
+.nav .navItemsDesktop button:hover {
   opacity: 80%;
 }
-.nav .navItems button a, .nav .navItemsDesktop button a {
+.nav .navItems button a,
+.nav .navItemsDesktop button a {
   text-decoration: none;
   color: white;
   background-color: rgb(48, 44, 44);
@@ -84,7 +94,7 @@ body {
     border-radius: 10px;
     top: 120%;
     right: 3%;
-    box-shadow: -2px 2px 2px 1px rgb(78, 74, 74);
+    box-shadow: -2px 2px 10px 0.5px rgb(29, 27, 27);
   }
   .nav .navItems.active {
     display: flex;
@@ -116,47 +126,28 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  min-height: 50vh;
-  background-color: white;
-  margin: 20px auto;
-  border-radius: 20px 100px 20px 100px;
+  width: 98%;
+  min-height: 60vh;
+  background-color: rgb(52, 52, 52);
+  margin: 30px auto;
+  border-radius: 20px;
+  box-shadow: 1px 2px 1px 1px rgb(0, 0, 0);
+  gap: 2px;
+  overflow: clip;
 }
-@media (min-width: 700px) {
-  .home, .profile, .formContainer, .feed {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-}
-.home h2, .profile h2, .formContainer h2, .feed h2 {
-  text-align: center;
-  padding: 0.2em;
-  color: rgb(62, 58, 58);
-  text-transform: capitalize;
-}
-.home .trivia, .profile .trivia, .formContainer .trivia, .feed .trivia {
-  background-color: aqua;
-  padding: 0.2em;
-  min-height: 100px;
-}
-
-.lineTop {
-  background-color: white;
-  width: 95%;
-  padding: 0 0.1px;
-  height: 2px;
-  border-radius: 100px;
-  margin: auto;
-}
-
 .feed {
+  width: 98%;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 100px 0 100px 0;
+  background-color: rgb(68, 64, 64);
+  color: black;
+}
+.feed .title, .feed .formContainer h2, .formContainer .feed h2 {
+  align-self: center;
+  min-height: auto;
 }
 .feed form {
   display: flex;
@@ -167,18 +158,32 @@ body {
   height: 40px;
 }
 .feed input {
-  width: 80%;
+  width: 90%;
   padding: 0.6em;
   border-radius: 10px;
   border: none;
   outline: 1px solid black;
 }
 
+.cardList {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.018);
+  padding: 2em 0.4em;
+}
+
 .postCard {
+  margin-inline: auto;
   width: 16em;
   min-height: 10em;
   padding: 0.5em;
-  box-shadow: -1px -1px 2px 1px rgb(128, 117, 117);
+  color: black;
+  box-shadow: -1px -1px 2px 1px rgba(56, 56, 56, 0.354);
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
   z-index: 1;
@@ -190,7 +195,7 @@ body {
   justify-content: space-between;
   width: 100%;
   position: relative;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(6, 135, 38);
   padding: 0.6em 0.2em;
 }
 .postCard .cardImage {
@@ -207,14 +212,14 @@ body {
   content: "";
   isolation: isolate;
   position: absolute;
-  background-image: linear-gradient(#504f4f, rgb(0, 0, 0), #4e4c4c);
+  background-image: linear-gradient(#ffffff, rgb(243, 243, 243), #e6e6e6);
   width: 47px;
   height: 47px;
   border-radius: 50%;
   top: -10%;
   left: -10%;
   z-index: -1;
-  animation: spin 500ms ease-in infinite;
+  animation: spin 1000ms ease-in infinite;
 }
 @keyframes spin {
   from {
@@ -239,7 +244,8 @@ body {
   gap: 5px;
   margin-right: 8%;
 }
-.postCard .creatorDeets .name, .postCard .creatorDeets .email {
+.postCard .creatorDeets .name,
+.postCard .creatorDeets .email {
   width: 100%;
   min-height: 20px;
   overflow-wrap: break-word;
@@ -298,6 +304,18 @@ body {
 }
 .postCard .footer div:hover {
   transform: scale(0.94);
+}
+@media (min-width: 768px) {
+  .postCard:nth-child(7n+1) {
+    grid-column-end: span 2;
+    width: 20em;
+  }
+}
+@media (min-width: 1000px) {
+  .postCard:nth-child(7n+1) {
+    grid-column-end: span 1;
+    width: 16em;
+  }
 }
 
 .formContainer {
@@ -373,7 +391,8 @@ body {
     width: 70%;
   }
 }
-.formContainer .postBtns a, .formContainer .postBtns button {
+.formContainer .postBtns a,
+.formContainer .postBtns button {
   display: block;
   width: 45%;
   text-decoration: none;
@@ -388,24 +407,96 @@ body {
   cursor: pointer;
   transition: 300ms ease-in;
 }
-.formContainer .postBtns a:hover, .formContainer .postBtns button:hover {
+.formContainer .postBtns a:hover,
+.formContainer .postBtns button:hover {
   transition: 300ms ease-in;
   transform: scale(0.9);
 }
-.formContainer .postBtns a.cancel, .formContainer .postBtns button.cancel {
+.formContainer .postBtns a.cancel,
+.formContainer .postBtns button.cancel {
   color: black;
   background-color: rgb(255, 255, 255);
 }
-.formContainer .postBtns a.edit, .formContainer .postBtns button.edit {
+.formContainer .postBtns a.edit,
+.formContainer .postBtns button.edit {
   color: rgb(255, 255, 255);
   background-color: rgb(2, 97, 64);
 }
 @media (min-width: 700px) {
-  .formContainer .postBtns a, .formContainer .postBtns button {
+  .formContainer .postBtns a,
+  .formContainer .postBtns button {
     width: 30%;
   }
 }
 
+.DYK, .text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: center;
+  overflow: clip;
+  white-space: nowrap;
+  margin: 0 auto;
+  border-right: 3px solid rgb(26, 224, 16);
+  animation: write 3.6s steps(50, end), blink 700ms ease-in infinite;
+}
+
+.text {
+  display: block;
+  -webkit-text-stroke: 0.1px black;
+  width: 100%;
+  height: 100%;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 0.1em 0.5em;
+}
+
+@keyframes blink {
+  from {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(26, 224, 16);
+  }
+  to {
+    border-color: transparent;
+  }
+}
+@keyframes write {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 30%;
+  }
+  50% {
+    width: 60%;
+  }
+  75% {
+    width: 75%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: conic-gradient(rgba(0, 0, 0, 0) 10%, #FFFFFF);
+  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
+  animation: s3 1s infinite linear;
+}
+
+@keyframes s3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
 .hide {
   display: none;
 }/*# sourceMappingURL=styles.css.map */

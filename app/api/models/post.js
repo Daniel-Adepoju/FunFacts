@@ -14,7 +14,7 @@ const PostSchema = new Schema({
     type: String,
     required: [true,'Tag is required'],
   }
-})
+},{timestamps: true})
 
 const Post = models.Post || model('Post',PostSchema)
 
