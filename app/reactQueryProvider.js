@@ -12,5 +12,5 @@ const ReactQueryProvider = ({children}) => {
         </QueryClientProvider>
   )
 }
-
+ 
 export default ReactQueryProvider
