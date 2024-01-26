@@ -49,7 +49,7 @@ const observerCallback = useCallback(node => {
 },[postsQuery.isLoading, postsQuery.hasNextPage])
 
 
-const mappedPosts =postsQuery?.data?.pages.flatMap((item,index) => {
+const mappedPosts = postsQuery?.data?.pages.flatMap((item,index) => {
   return item.posts.map((post,index) => {
     return (
       <div key={post._id} className="postCard"> <Card
