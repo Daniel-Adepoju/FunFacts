@@ -1,16 +1,16 @@
 'use client'
 import { useRef} from "react"
-import Card from './Card'
+import Card from '../components/Card'
 import axios from "axios"
 import { useState, useCallback} from "react"
 import { useInfiniteQuery} from "@tanstack/react-query"
-import Loader from "./Loader"
+import Loader from "../components/Loader"
 import { useSearchParams } from "next/navigation"
 const fetchPosts = axios.create({
   baseURL: process.env.BASE_URL
 })
 
-export const CardList = () => {
+const SearchField = () => {
 const observer = useRef()
 const searchParams = useSearchParams()
 const [limit,setLimit] = useState(10)
@@ -73,13 +73,22 @@ const mappedPosts =postsQuery?.data?.pages.flatMap((item,index) => {
 
     return (
       <>
+<div className="title" style={{marginTop:'15px'}}>Showing search results for
+  <span className="val">
+ '{searchValue}'
+ </span>
+    </div>
+      <div className="searchField">
     {postsQuery.isLoading ? <Loader /> : <div className="cardList">{mappedPosts}</div>}
      <div className="title">
       <h2>
       {postsQuery.isFetchingNextPage ? <Loader/> : ''}
       </h2>
       </div>
+      </div>
   
       </>
     )
   }
+
+  export default SearchField

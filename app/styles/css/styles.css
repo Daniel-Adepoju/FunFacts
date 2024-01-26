@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Spline+Sans+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Genos:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Besley:ital@1&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -15,8 +20,9 @@ body {
   background-color: rgb(52, 52, 52);
 }
 
-.title, .formContainer h2 {
-  min-width: 10%;
+.title, .emptyDisplay, .formContainer h2 {
+  font-family: "Chakra Petch", sans-serif, "Spline Sans Mono", monospace;
+  min-width: 8%;
   text-align: center;
   padding: 0.2em;
   color: rgb(255, 255, 255);
@@ -48,10 +54,11 @@ body {
 }
 .nav .navItems button,
 .nav .navItemsDesktop button {
+  font-family: "Chakra Petch", sans-serif, "Spline Sans Mono", monospace;
   width: 10em;
   padding: 0.7em;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   background-color: rgb(46, 44, 44);
   color: white;
   cursor: pointer;
@@ -121,7 +128,7 @@ body {
   width: 99%;
 }
 
-.home, .profile, .formContainer, .feed {
+.home, .searchField, .profile, .formContainer, .feed {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,10 +138,11 @@ body {
   background-color: rgb(52, 52, 52);
   margin: 30px auto;
   border-radius: 20px;
-  box-shadow: 1px 2px 1px 1px rgb(0, 0, 0);
+  box-shadow: 1px 0.9px 0.91px 0.9px rgb(0, 0, 0);
   gap: 2px;
   overflow: clip;
 }
+
 .feed {
   width: 98%;
   box-shadow: none;
@@ -142,10 +150,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: rgb(68, 64, 64);
+  background-color: rgb(53, 52, 52);
   color: black;
 }
-.feed .title, .feed .formContainer h2, .formContainer .feed h2 {
+.feed .title, .feed .emptyDisplay, .feed .formContainer h2, .formContainer .feed h2 {
+  letter-spacing: 1px;
   align-self: center;
   min-height: auto;
 }
@@ -153,16 +162,28 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  width: 60%;
+  justify-content: space-between;
+  padding-inline: 1em;
+  width: 100%;
   height: 40px;
 }
+@media (min-width: 750px) {
+  .feed form {
+    width: 60%;
+  }
+}
 .feed input {
-  width: 90%;
+  width: 95%;
   padding: 0.6em;
   border-radius: 10px;
   border: none;
   outline: 1px solid black;
+  font-family: "M PLUS 1 Code", monospace;
+}
+.feed .searchIcon {
+  width: 59px;
+  border: none;
+  outline: none;
 }
 
 .cardList {
@@ -195,8 +216,10 @@ body {
   justify-content: space-between;
   width: 100%;
   position: relative;
-  border-bottom: 2px solid rgb(6, 135, 38);
+  color: rgb(57, 56, 55);
+  border-bottom: 2px solid rgb(187, 189, 187);
   padding: 0.6em 0.2em;
+  font-family: "Genos", sans-serif;
 }
 .postCard .cardImage {
   background-color: white;
@@ -262,6 +285,7 @@ body {
   gap: 10px;
   margin-top: 10px;
   margin-inline: auto;
+  font-family: "M PLUS 1 Code", monospace;
 }
 .postCard .middle .copyBtn {
   display: flex;
@@ -274,6 +298,12 @@ body {
 }
 .postCard .middle .copyBtn img {
   width: 100%;
+}
+.postCard .middle h5 {
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 12px;
+  color: rgb(6, 135, 138);
 }
 .postCard .content {
   background-color: rgb(245, 245, 245);
@@ -429,13 +459,23 @@ body {
   }
 }
 
+.emptyDisplay {
+  font-size: 2em;
+  color: #df8a0b;
+}
+
+.val {
+  color: #df8a0b;
+  margin-left: 7px;
+  text-transform: lowercase;
+}
+
 .DYK, .text {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: monospace;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: center;
   overflow: clip;

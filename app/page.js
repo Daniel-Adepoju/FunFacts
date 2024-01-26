@@ -9,8 +9,7 @@ const Home = () => {
     <>
     <div className='home' onClick={() => menu.setMenuOpen(false)}>
     <div className="title">
-  {/* <h2>Discover and share fun facts</h2> */}
-  <DYK />
+    <DYK />
       </div> 
     <Feed />
     </div>

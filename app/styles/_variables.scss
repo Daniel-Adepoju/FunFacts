@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Spline+Sans+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Besley:ital@1&display=swap');
+
+$title: 'Chakra Petch', sans-serif,'Spline Sans Mono', monospace;
+$content: 'M PLUS 1 Code', monospace;
+$head: 'Genos', sans-serif;
+// 'Itim', cursive;
+$tag: 'Besley', serif;
+
+$fonts : (
+'title': $title,
+'content': $content,
+'head':$head,
+'tag': $tag,
+)

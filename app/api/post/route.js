@@ -5,9 +5,16 @@ export const GET = async (req,res) => {
   const {searchParams} = new URL(req.url)
   const page = searchParams.get('page') || 1
   const limit = searchParams.get('limit') || 10
+  const search = searchParams.get('search') || ''
   const skipNum = Number((page- 1) * limit)
   let cursor = Number((page * limit) / limit)
-  
+  let content = {
+    content:{ $regex: search, $options: 'i'}
+  }
+   let tag = { 
+    tag:{ $regex: search, $options: 'i'}
+  }
+
   try {
     await connecToDB()
   const postsDeets = await Post.find()
@@ -15,7 +22,7 @@ export const GET = async (req,res) => {
   if (cursor >= numOfPages) {
     cursor = undefined
   }
-  let postsConfig = Post.find().sort('-createdAt').populate("creator")
+  let postsConfig = Post.find({$or :[ content,tag]}).sort('-createdAt').populate("creator")
 
    postsConfig = postsConfig.skip(skipNum).limit(limit)
   

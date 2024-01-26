@@ -1,3 +1,4 @@
+@import './variables';
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +15,9 @@
 @mixin transition($duration: 350ms, $type: ease-in) {
   transition: $duration $type;
 }
+@function fontFam($fontVal) {
+  @return map-get($fonts,$fontVal);
+}
 
 body {
   @include flex(column, center);
@@ -23,7 +27,8 @@ body {
 }
 
 .title {
-  min-width:10%;
+  font-family: fontFam('title');
+  min-width:8%;
   text-align: center;
   padding: 0.2em;
   color: rgb(255, 255, 255);
@@ -47,10 +52,11 @@ body {
     gap: 0.9em;
     width: 300px;
     button {
+      font-family: fontFam('title');
       width: 10em;
       padding: 0.7em;
       border: none;
-      border-radius: 20px;
+      border-radius: 5px;
       background-color: rgb(46, 44, 44);
       color: white;
       cursor: pointer;
@@ -121,44 +127,45 @@ body {
   background-color: rgb(52, 52, 52);
   margin: 30px auto;
   border-radius: 20px;
-  box-shadow: 1px 2px 1px 1px  rgb(0, 0, 0);
+  box-shadow: 1px 0.9px 0.91px 0.9px  rgb(0, 0, 0);
   gap: 2px;
   overflow: clip;
-  @media (min-width: 900px) {
-    // @include flex(row, center, space-evenly);
-    // .title {
-    //  background-color: grey;
-    //  padding: .4em;
-    //  align-self:  stretch;
-    //  min-height:60vh;
-    //  width:40%;
-    // }
-  }
 }
 .feed {
   @extend .home;
   width: 98%;
   box-shadow: none;
   @include flex(column, center, flex-start);
-  background-color: rgb(68, 64, 64);
+  background-color: rgb(53, 52, 52);
   color:black;
 
   .title {
+    letter-spacing: 1px;
     align-self: center;
     min-height: auto;
   }
   form {
-    @include flex(row, center, center);
-    width: 60%;
+    @include flex(row, center, space-between);
+    padding-inline: 1em;
+    width: 100%;
     height: 40px;
-    // background-color: grey;
+    @media (min-width: 750px) {
+      width: 60%;
+    }
   }
   input {
-    width: 90%;
+    width: 95%;
     padding: 0.6em;
     border-radius: 10px;
     border: none;
     outline: 1px solid black;
+    font-family: fontFam('content');
+  }
+  
+  .searchIcon {
+    width: 59px;
+    border:none;
+    outline:none;
   }
 }
 .cardList {
@@ -187,8 +194,10 @@ body {
     @include flex(row-reverse, center, space-between);
     width: 100%;
     position: relative;
-    border-bottom: 2px solid rgb(6, 135, 38);
+    color: rgb(57, 56, 55);
+    border-bottom: 2px solid rgb(187, 189, 187);
     padding: 0.6em 0.2em;
+    font-family: fontFam('head');
   }
   .cardImage {
     background-color: white;
@@ -249,6 +258,7 @@ body {
     gap: 10px;
     margin-top: 10px;
     margin-inline: auto;
+    font-family: fontFam('content');
     .copyBtn {
       @include flex(row, center);
       gap: 8px;
@@ -258,8 +268,15 @@ body {
         width: 100%;
       }
     }
+    h5{
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 12px;
+      color: rgb(6,135,138);
+    }
   }
   .content {
+   
     background-color: rgb(245, 245, 245);
     white-space: pre-wrap;
     min-height: 50%;
@@ -397,18 +414,27 @@ body {
 
 
 
-
-
+.emptyDisplay {
+  @extend .title;
+  font-size: 2em;
+  color:#df8a0b;
+}
+.searchField {
+  @extend .home;
+}
+.val {
+  color: #df8a0b;
+  margin-left: 7px;
+  text-transform: lowercase;
+}
 
 .DYK,.text{
  @include flex(row,center ,center );
-  font-family: monospace;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight:bold;
   text-align:center;
  overflow: clip;
   white-space: nowrap;
-//  width:100%;
  margin: 0 auto;
 border-right: 3px solid rgb(26, 224, 16); 
 animation: write 3.6s steps(50,end),blink 700ms ease-in infinite
